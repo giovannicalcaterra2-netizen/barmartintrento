@@ -1,3 +1,70 @@
 :root {
   --logo-url: url("../images/logo.png");
 }
+
+/* Fix gallery: immagini vere, niente crop strani, card pulite */
+.gallery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.photo-card {
+  overflow: hidden;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.photo-card figcaption {
+  background: rgba(9, 3, 5, .92);
+}
+
+/* Fix menu: una colonna leggibile, senza buchi enormi da layout a griglia */
+.menu-page {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  width: min(920px, calc(100% - 32px)) !important;
+  max-width: 920px !important;
+  margin-inline: auto !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+  padding-top: 16px !important;
+}
+
+.menu-category {
+  width: 100% !important;
+}
+
+.menu-category-head a {
+  display: none !important;
+}
+
+.menu-category-head h2 {
+  font-size: clamp(28px, 4vw, 42px) !important;
+}
+
+.menu-item {
+  align-items: flex-start;
+}
+
+.menu-item span {
+  min-width: max-content;
+}
+
+@media (max-width: 760px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-card img {
+    height: 310px;
+  }
+
+  .menu-page {
+    width: calc(100% - 28px) !important;
+  }
+}
