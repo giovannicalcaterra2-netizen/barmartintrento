@@ -10,25 +10,27 @@
   <link rel="stylesheet" href="social.css" />
 </head>
 <body>
-  <div class="artboard story">
+  <div class="artboard story" data-template="story">
     <div class="logo">
       <img src="../images/logo.png" alt="Bar Martin">
       <span>Bar Martin</span>
     </div>
-    <div class="badge">Trento</div>
+    <div class="badge" data-field="badge">Trento</div>
     <div class="photo">
-      <img src="../images/foto-cocktail-lilla.jpg" alt="Cocktail Bar Martin">
+      <img data-field="image" src="../images/foto-cocktail-lilla.jpg" alt="Bar Martin">
     </div>
     <div class="content">
-      <p class="kicker">Questa sera</p>
-      <h1>Cocktail night</h1>
-      <p class="subtitle">Drink, musica e atmosfera calda in centro.</p>
+      <p class="kicker" data-field="kicker">Questa sera</p>
+      <h1 data-field="title">Cocktail night</h1>
+      <p class="subtitle" data-field="subtitle">Drink, musica e atmosfera calda in centro.</p>
       <div class="info-row">
-        <span>Dalle 21:00</span>
-        <span>@barmartintrento</span>
+        <span data-field="date">Dalle 21:00</span>
+        <span data-field="time">@barmartintrento</span>
       </div>
-      <div class="cta">Scrivici per prenotare</div>
+      <div class="cta" data-field="cta">Scrivici per prenotare</div>
     </div>
   </div>
+  <script src="social-content.js"></script>
+  <script src="social-render.js"></script>
 </body>
 </html>
