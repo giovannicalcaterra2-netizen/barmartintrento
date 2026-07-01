@@ -1,4 +1,4 @@
-const content = window.BAR_MARTIN_CONTENT;
+const content = window.BAR_MARTIN_CONTENT || { events: [], menu: [] };
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 
@@ -9,51 +9,55 @@ const eventsGrid = document.getElementById('eventsGrid');
 if (eventsGrid) {
   eventsGrid.innerHTML = content.events.map(event => `
     <article class="event-card reveal">
-      <span class="event-date">${event.date}</span>
-      <h3>${event.title}</h3>
-      <p>${event.description}</p>
-      <div class="event-meta">
+      <div>
+        <span class="event-date">${event.date}</span>
+        <h3>${event.title}</h3>
+        <p>${event.description}</p>
+      </div>
+      <div class="event-bottom">
         <span>${event.time}</span>
-        <span>${event.tag}</span>
+        <a href="https://wa.me/393290773833?text=Ciao%20Bar%20Martin%2C%20vorrei%20info%20su%20${encodeURIComponent(event.title)}" target="_blank" rel="noopener">${event.cta}</a>
       </div>
     </article>
   `).join('');
 }
 
-const menuTabs = document.getElementById('menuTabs');
-const menuGrid = document.getElementById('menuGrid');
-let activeCategory = 0;
-
-function renderMenu() {
-  if (!menuTabs || !menuGrid) return;
-  menuTabs.innerHTML = content.menu.map((section, index) => `
-    <button class="menu-tab ${index === activeCategory ? 'active' : ''}" data-index="${index}" role="tab" aria-selected="${index === activeCategory}">${section.category}</button>
-  `).join('');
-
-  const selected = content.menu[activeCategory];
-  menuGrid.innerHTML = selected.items.map(item => `
-    <div class="menu-item reveal visible">
-      <div>
-        <strong>${item.name}</strong>
-        <small>${item.note || ''}</small>
+const menuPills = document.getElementById('menuPills');
+const menuSections = document.getElementById('menuSections');
+if (menuPills && menuSections) {
+  menuPills.innerHTML = content.menu.map(section => `<a href="#${slug(section.category)}">${section.category}</a>`).join('');
+  menuSections.innerHTML = content.menu.map(section => `
+    <article class="menu-category reveal" id="${slug(section.category)}">
+      <div class="menu-category-head">
+        <h2>${section.category}</h2>
+        <a href="#top">Su</a>
       </div>
-      <span class="price">${item.price}</span>
-    </div>
+      <div class="menu-items">
+        ${section.items.map(item => `
+          <div class="menu-item">
+            <div>
+              <strong>${item.name}</strong>
+              ${item.note ? `<small>${item.note}</small>` : ''}
+            </div>
+            <span>${item.price}</span>
+          </div>
+        `).join('')}
+      </div>
+    </article>
   `).join('');
-
-  menuTabs.querySelectorAll('.menu-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      activeCategory = Number(btn.dataset.index);
-      renderMenu();
-    });
-  });
 }
-renderMenu();
 
-const observer = new IntersectionObserver(entries => {
+function slug(value) {
+  return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 }) : null;
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => {
+  if (observer) observer.observe(el);
+  else el.classList.add('visible');
+});
