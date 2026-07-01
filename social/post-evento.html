@@ -10,25 +10,27 @@
   <link rel="stylesheet" href="social.css" />
 </head>
 <body>
-  <div class="artboard post">
+  <div class="artboard post" data-template="post">
     <div class="logo">
       <img src="../images/logo.png" alt="Bar Martin">
       <span>Bar Martin</span>
     </div>
-    <div class="badge">Via del Suffragio 51</div>
+    <div class="badge" data-field="badge">Via del Suffragio 51</div>
     <div class="photo">
-      <img src="../images/foto-sala-eventi.jpg" alt="Sala eventi Bar Martin">
+      <img data-field="image" src="../images/foto-sala-eventi.jpg" alt="Bar Martin">
     </div>
     <div class="content">
-      <p class="kicker">Evento</p>
-      <h1>Serata al Bar Martin</h1>
-      <p class="subtitle">Cocktail, musica e sala interna nel cuore di Trento.</p>
+      <p class="kicker" data-field="kicker">Evento</p>
+      <h1 data-field="title">Serata al Bar Martin</h1>
+      <p class="subtitle" data-field="subtitle">Cocktail, musica e sala interna nel cuore di Trento.</p>
       <div class="info-row">
-        <span>Venerdì</span>
-        <span>Dalle 21:00</span>
+        <span data-field="date">Venerdì</span>
+        <span data-field="time">Dalle 21:00</span>
       </div>
-      <div class="cta">Prenota il tuo tavolo</div>
+      <div class="cta" data-field="cta">Prenota il tuo tavolo</div>
     </div>
   </div>
+  <script src="social-content.js"></script>
+  <script src="social-render.js"></script>
 </body>
 </html>
