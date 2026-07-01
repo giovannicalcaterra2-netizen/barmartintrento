@@ -1,25 +1,25 @@
 window.BAR_MARTIN_CONTENT = {
   events: [
     {
-      title: "Night Latin",
-      date: "Ogni martedì",
+      title: "Serate musicali",
+      date: "In settimana",
       time: "Dalle 21:00",
-      description: "Musica latina, drink e atmosfera calda nel cuore di Trento.",
-      cta: "Prenota un tavolo"
+      description: "Musica, drink e atmosfera da disco bar nel cuore di Trento.",
+      cta: "Chiedi info"
     },
     {
-      title: "Speed Dating 30–50",
-      date: "Format eventi",
-      time: "Dalle 18:00",
-      description: "Persone vere, conversazioni dal vivo e una serata pensata per uscire dalla solita routine.",
-      cta: "Chiedi la prossima data"
+      title: "Speed dating",
+      date: "Prossime date",
+      time: "Su prenotazione",
+      description: "Un format per conoscersi dal vivo, chiacchierare e vivere una serata diversa dal solito.",
+      cta: "Scopri la data"
     },
     {
-      title: "Feste private & lauree",
+      title: "Feste private e lauree",
       date: "Su prenotazione",
       time: "Sala interna",
-      description: "Compleanni, lauree, feste Erasmus e serate community con drink, shisha e musica.",
-      cta: "Scrivi su WhatsApp"
+      description: "Uno spazio per compleanni, lauree, feste Erasmus ed eventi privati con drink, shisha e musica.",
+      cta: "Prenota"
     }
   ],
   menu: [
