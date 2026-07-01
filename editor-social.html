@@ -10,22 +10,15 @@
   <style>
     :root{--night:#090305;--red:#cf171f;--cream:#fff0d6;--gold:#f4d9b5;--muted:#d2b892}
     *{box-sizing:border-box} body{margin:0;background:var(--night);color:var(--cream);font-family:Inter,Arial,sans-serif}
-    .app{min-height:100vh;display:grid;grid-template-columns:380px 1fr;gap:22px;padding:22px}
+    .app{min-height:100vh;display:grid;grid-template-columns:390px 1fr;gap:22px;padding:22px}
     .panel{background:rgba(255,240,214,.08);border:1px solid rgba(255,240,214,.14);border-radius:26px;padding:20px;max-height:calc(100vh - 44px);overflow:auto}
     .toplink{color:var(--gold);font-weight:900;text-decoration:none} h1{font-size:38px;line-height:.95;margin:18px 0 8px;letter-spacing:-.06em} p{color:var(--muted);line-height:1.45}
     label{display:block;margin:14px 0 7px;color:var(--gold);font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.06em}
-    input,textarea,select{width:100%;border:1px solid rgba(255,240,214,.18);background:rgba(0,0,0,.30);color:var(--cream);border-radius:14px;padding:12px 13px;font:inherit} textarea{min-height:86px;resize:vertical}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:grid;gap:10px;margin-top:18px}.btn{border:0;border-radius:999px;padding:14px 18px;font-weight:950;background:var(--red);color:white;text-align:center;text-decoration:none;cursor:pointer}.btn.alt{background:var(--cream);color:#180607}
+    input,textarea,select{width:100%;border:1px solid rgba(255,240,214,.18);background:rgba(0,0,0,.30);color:var(--cream);border-radius:14px;padding:12px 13px;font:inherit} input[type=file]{padding:10px;background:rgba(255,240,214,.06)} textarea{min-height:86px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:999px;padding:14px 18px;font-weight:950;background:var(--red);color:white;text-align:center;text-decoration:none;cursor:pointer}.btn.alt{background:var(--cream);color:#180607}.btn.full{grid-column:1/-1}
     .stage{min-height:calc(100vh - 44px);display:grid;place-items:center;background:linear-gradient(145deg,#171111,#050202);border:1px solid rgba(255,240,214,.10);border-radius:28px;overflow:auto;padding:28px}
-    .shell.post{width:432px;height:540px}.shell.story{width:360px;height:640px}.canvas{position:relative;width:100%;height:100%;overflow:hidden;background:#090305;isolation:isolate;box-shadow:0 24px 80px rgba(0,0,0,.42)}
-    .canvas:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,.10) 34%,rgba(0,0,0,.86) 100%),radial-gradient(circle at 16% 12%,rgba(207,23,31,.82),transparent 33%),radial-gradient(circle at 88% 72%,rgba(207,23,31,.54),transparent 30%)}
-    .canvas:after{content:"";position:absolute;inset:12px;z-index:2;border:1.4px solid rgba(255,240,214,.22);border-radius:18px;pointer-events:none}.photo{position:absolute;inset:0;z-index:0}.photo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.06) contrast(1.04)}
-    .logo{position:absolute;top:25px;left:25px;z-index:3;display:flex;align-items:center;gap:8px;padding:5px 9px 5px 5px;border-radius:999px;background:rgba(9,3,5,.68);border:1px solid rgba(255,240,214,.18);font-weight:950;font-size:13px}.logo img{width:31px;height:31px;border-radius:50%}
-    .badge{position:absolute;top:29px;right:25px;z-index:3;padding:8px 11px;border-radius:999px;background:var(--red);font-size:12px;font-weight:950;color:white;box-shadow:0 10px 24px rgba(207,23,31,.34)}
-    .content{position:absolute;left:29px;right:29px;bottom:30px;z-index:3}.kicker{display:inline-flex;margin:0 0 10px;padding:6px 8px;border-radius:999px;background:rgba(255,240,214,.13);color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:950}
-    .title{margin:0;max-width:360px;font-size:47px;line-height:.88;letter-spacing:-.08em;text-wrap:balance}.subtitle{margin:13px 0 0;max-width:340px;font-size:17px;line-height:1.12;color:var(--gold);font-weight:850}.info{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}.info span{padding:7px 10px;border-radius:999px;background:rgba(9,3,5,.72);border:1px solid rgba(255,240,214,.18);font-size:12px;font-weight:950}.cta{display:inline-flex;margin-top:14px;padding:10px 14px;border-radius:999px;background:var(--cream);color:#170607;font-size:14px;font-weight:950}
-    .story .logo{top:25px;left:24px}.story .badge{top:29px;right:24px}.story .content{left:26px;right:26px;bottom:45px}.story .title{font-size:46px;max-width:310px}.story .subtitle{font-size:16px}.story .canvas:after{inset:13px;border-radius:20px}
-    @media(max-width:900px){.app{grid-template-columns:1fr}.panel{max-height:none}.stage{min-height:650px}.shell.post{width:330px;height:413px}.shell.story{width:300px;height:533px}.title{font-size:36px}.story .title{font-size:38px}}
+    canvas{max-width:min(100%,520px);max-height:calc(100vh - 90px);border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.42);background:#090305}.hint{font-size:13px;margin-top:12px}.hidden{display:none}
+    @media(max-width:900px){.app{grid-template-columns:1fr}.panel{max-height:none}.stage{min-height:520px}canvas{max-height:620px}.actions{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -33,39 +26,160 @@
     <section class="panel">
       <a class="toplink" href="index.html">← Torna al sito</a>
       <h1>Editor social</h1>
-      <p>Preview live più comoda. Quando ti piace, apri la grafica a dimensione reale e fai screenshot/export.</p>
-      <label>Formato</label><select id="format"><option value="post">Post 1080×1350</option><option value="story">Story 1080×1920</option></select>
+      <p>Carica anche immagini tue, controlla la preview e scarica direttamente la grafica finale in PNG.</p>
+
+      <label>Formato</label>
+      <select id="format"><option value="post">Post 1080×1350</option><option value="story">Story 1080×1920</option></select>
+
       <div class="row"><div><label>Kicker</label><input id="kicker" value="Evento"></div><div><label>Badge</label><input id="badge" value="Via del Suffragio 51"></div></div>
       <label>Titolo</label><input id="title" value="Serata al Bar Martin">
       <label>Sottotitolo</label><textarea id="subtitle">Cocktail, musica e sala interna nel cuore di Trento.</textarea>
       <div class="row"><div><label>Info 1</label><input id="date" value="Venerdì"></div><div><label>Info 2</label><input id="time" value="Dalle 21:00"></div></div>
       <label>CTA</label><input id="cta" value="Prenota il tuo tavolo">
-      <label>Immagine</label><select id="image"><option value="foto-sala-eventi.jpg">Sala eventi</option><option value="foto-cocktail-lilla.jpg">Cocktail lilla</option><option value="foto-aperitivo-cocktail-rossi.jpg">Aperitivo</option><option value="foto-te-iraniano.jpg">Tè iraniano</option></select>
-      <div class="actions"><button class="btn" id="randomText">Proposta rapida</button><a class="btn alt" id="openLink" href="social/post-evento.html" target="_blank" rel="noopener">Apri a dimensione reale</a></div>
+
+      <label>Immagine di sfondo già caricata</label>
+      <select id="image"><option value="foto-sala-eventi.jpg">Sala eventi</option><option value="foto-cocktail-lilla.jpg">Cocktail lilla</option><option value="foto-aperitivo-cocktail-rossi.jpg">Aperitivo</option><option value="foto-te-iraniano.jpg">Tè iraniano</option></select>
+      <label>Oppure carica una nuova immagine</label>
+      <input id="upload" type="file" accept="image/*">
+      <p class="hint">L'immagine caricata resta solo nel tuo browser e non viene pubblicata sul sito.</p>
+
+      <div class="actions">
+        <button class="btn" id="randomText">Proposta rapida</button>
+        <button class="btn alt" id="clearUpload">Usa foto sito</button>
+        <button class="btn full" id="downloadBtn">Scarica PNG finale</button>
+      </div>
     </section>
-    <section class="stage"><div id="shell" class="shell post"><div class="canvas"><div class="photo"><img id="pImage" src="images/foto-sala-eventi.jpg" alt=""></div><div class="logo"><img src="images/logo.png" alt=""><span>Bar Martin</span></div><div class="badge" id="pBadge"></div><div class="content"><p class="kicker" id="pKicker"></p><h2 class="title" id="pTitle"></h2><p class="subtitle" id="pSubtitle"></p><div class="info"><span id="pDate"></span><span id="pTime"></span></div><div class="cta" id="pCta"></div></div></div></div></section>
+    <section class="stage"><canvas id="canvas" width="1080" height="1350"></canvas></section>
   </main>
+
   <script>
-    const ids=['format','kicker','badge','title','subtitle','date','time','cta','image'];
-    const $=id=>document.getElementById(id);
-    function render(){
-      const f=$('format').value, img=$('image').value;
-      $('shell').className='shell '+f;
-      $('pImage').src='images/'+img;
-      $('pBadge').textContent=$('badge').value;
-      $('pKicker').textContent=$('kicker').value;
-      $('pTitle').textContent=$('title').value;
-      $('pSubtitle').textContent=$('subtitle').value;
-      $('pDate').textContent=$('date').value;
-      $('pTime').textContent=$('time').value;
-      $('pCta').textContent=$('cta').value;
-      const page=f==='story'?'story-evento.html':'post-evento.html';
-      const q=new URLSearchParams({kicker:$('kicker').value,title:$('title').value,subtitle:$('subtitle').value,date:$('date').value,time:$('time').value,cta:$('cta').value,badge:$('badge').value,image:'../images/'+img});
-      $('openLink').href='social/'+page+'?'+q.toString();
+    const $ = id => document.getElementById(id);
+    const canvas = $('canvas');
+    const ctx = canvas.getContext('2d');
+    const fields = ['format','kicker','badge','title','subtitle','date','time','cta','image'];
+    let bg = new Image();
+    let logo = new Image();
+    let customBgData = '';
+    bg.crossOrigin = 'anonymous';
+    logo.crossOrigin = 'anonymous';
+    logo.src = 'images/logo.png';
+
+    function bgPath(){ return customBgData || 'images/' + $('image').value; }
+
+    function loadBg(){
+      bg = new Image();
+      bg.crossOrigin = 'anonymous';
+      bg.onload = draw;
+      bg.src = bgPath();
     }
-    ids.forEach(id=>{$(id).addEventListener('input',render);$(id).addEventListener('change',render)});
-    $('randomText').addEventListener('click',()=>{ $('kicker').value='Questa sera'; $('title').value='Cocktail night'; $('subtitle').value='Drink, musica e atmosfera calda in centro a Trento.'; $('date').value='Stasera'; $('time').value='Dalle 21:00'; $('cta').value='Scrivici per prenotare'; $('image').value='foto-cocktail-lilla.jpg'; render(); });
-    render();
+
+    function fitImage(img, x, y, w, h){
+      const ir = img.width / img.height;
+      const r = w / h;
+      let sw, sh, sx, sy;
+      if(ir > r){ sh = img.height; sw = sh * r; sx = (img.width - sw) / 2; sy = 0; }
+      else { sw = img.width; sh = sw / r; sx = 0; sy = (img.height - sh) / 2; }
+      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+    }
+
+    function roundRect(x,y,w,h,r){
+      ctx.beginPath();
+      ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+    }
+
+    function wrapText(text, x, y, maxWidth, lineHeight, maxLines){
+      const words = String(text).split(' ');
+      let line = '', lines = [];
+      for(const word of words){
+        const test = line ? line + ' ' + word : word;
+        if(ctx.measureText(test).width > maxWidth && line){ lines.push(line); line = word; }
+        else line = test;
+      }
+      if(line) lines.push(line);
+      if(maxLines && lines.length > maxLines){ lines = lines.slice(0, maxLines); lines[maxLines-1] += '…'; }
+      lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));
+      return y + lines.length * lineHeight;
+    }
+
+    function pill(text, x, y, fontSize, fill, color){
+      ctx.font = '900 ' + fontSize + 'px Inter, Arial';
+      const padX = fontSize * .72, padY = fontSize * .42;
+      const w = ctx.measureText(text).width + padX*2, h = fontSize + padY*2;
+      ctx.save(); roundRect(x,y,w,h,h/2); ctx.fillStyle = fill; ctx.fill(); ctx.fillStyle = color; ctx.textBaseline='middle'; ctx.fillText(text,x+padX,y+h/2+1); ctx.restore();
+      return {w,h};
+    }
+
+    function drawLogo(x,y,scale){
+      const size = 74*scale;
+      ctx.save();
+      roundRect(x,y,size+205*scale,size+16*scale,(size+16*scale)/2); ctx.fillStyle='rgba(9,3,5,.70)'; ctx.fill();
+      ctx.strokeStyle='rgba(255,240,214,.18)'; ctx.lineWidth=2*scale; ctx.stroke();
+      if(logo.complete) { ctx.save(); ctx.beginPath(); ctx.arc(x+8*scale+size/2,y+8*scale+size/2,size/2,0,Math.PI*2); ctx.clip(); ctx.drawImage(logo,x+8*scale,y+8*scale,size,size); ctx.restore(); }
+      ctx.fillStyle='#fff0d6'; ctx.font='900 '+(31*scale)+'px Inter, Arial'; ctx.textBaseline='middle'; ctx.fillText('Bar Martin',x+size+25*scale,y+size/2+8*scale);
+      ctx.restore();
+    }
+
+    function draw(){
+      const isStory = $('format').value === 'story';
+      const W = isStory ? 1080 : 1080, H = isStory ? 1920 : 1350;
+      canvas.width = W; canvas.height = H;
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle = '#090305'; ctx.fillRect(0,0,W,H);
+      if(bg.complete && bg.width) fitImage(bg,0,0,W,H);
+
+      let g = ctx.createLinearGradient(0,0,0,H);
+      g.addColorStop(0,'rgba(0,0,0,.42)'); g.addColorStop(.36,'rgba(0,0,0,.16)'); g.addColorStop(1,'rgba(0,0,0,.88)');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      let r1 = ctx.createRadialGradient(150,130,10,150,130,470); r1.addColorStop(0,'rgba(207,23,31,.78)'); r1.addColorStop(1,'rgba(207,23,31,0)'); ctx.fillStyle=r1; ctx.fillRect(0,0,W,H);
+      let r2 = ctx.createRadialGradient(W-120,H*0.72,10,W-120,H*0.72,420); r2.addColorStop(0,'rgba(207,23,31,.48)'); r2.addColorStop(1,'rgba(207,23,31,0)'); ctx.fillStyle=r2; ctx.fillRect(0,0,W,H);
+
+      const m = isStory ? 70 : 62;
+      drawLogo(m,m,isStory?1.05:1);
+      const badgeText = $('badge').value;
+      ctx.font = '900 '+(isStory?30:28)+'px Inter, Arial';
+      const bw = ctx.measureText(badgeText).width + 52, bh = isStory ? 68 : 64;
+      ctx.save(); roundRect(W-m-bw,m+10,bw,bh,bh/2); ctx.fillStyle='#cf171f'; ctx.fill(); ctx.fillStyle='#fff'; ctx.textBaseline='middle'; ctx.fillText(badgeText,W-m-bw+26,m+10+bh/2+1); ctx.restore();
+
+      ctx.strokeStyle='rgba(255,240,214,.22)'; ctx.lineWidth=isStory?3:3; roundRect(isStory?38:30,isStory?38:30,W-(isStory?76:60),H-(isStory?76:60),isStory?54:42); ctx.stroke();
+
+      const left = isStory ? 78 : 72, bottom = isStory ? 135 : 76;
+      const baseY = H - bottom;
+      ctx.textBaseline='alphabetic';
+      const titleSize = isStory ? 138 : 112;
+      const subtitleSize = isStory ? 48 : 40;
+      const kickerSize = isStory ? 30 : 28;
+      const infoSize = isStory ? 34 : 29;
+      const ctaSize = isStory ? 40 : 34;
+
+      pill($('kicker').value,left,baseY-(isStory?575:450),kickerSize,'rgba(255,240,214,.13)','#f4d9b5');
+      ctx.fillStyle='#fff0d6'; ctx.font='900 '+titleSize+'px Inter, Arial';
+      let y = wrapText($('title').value,left,baseY-(isStory?405:315),W-left*2,titleSize*.90,isStory?3:2);
+      ctx.fillStyle='#f4d9b5'; ctx.font='850 '+subtitleSize+'px Inter, Arial';
+      y = wrapText($('subtitle').value,left,y+34,W-left*2,subtitleSize*1.18,2);
+      const p1 = pill($('date').value,left,y+32,infoSize,'rgba(9,3,5,.72)','#fff0d6');
+      pill($('time').value,left+p1.w+18,y+32,infoSize,'rgba(9,3,5,.72)','#fff0d6');
+      pill($('cta').value,left,y+32+p1.h+28,ctaSize,'#fff0d6','#170607');
+    }
+
+    function render(){ loadBg(); }
+    fields.forEach(id=>{$(id).addEventListener('input',render);$(id).addEventListener('change',render)});
+    $('upload').addEventListener('change', e=>{
+      const file = e.target.files && e.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = () => { customBgData = reader.result; loadBg(); };
+      reader.readAsDataURL(file);
+    });
+    $('clearUpload').addEventListener('click',()=>{ customBgData=''; $('upload').value=''; loadBg(); });
+    $('downloadBtn').addEventListener('click',()=>{
+      draw();
+      const a = document.createElement('a');
+      const name = ($('format').value === 'story') ? 'bar-martin-story.png' : 'bar-martin-post.png';
+      a.download = name; a.href = canvas.toDataURL('image/png'); a.click();
+    });
+    $('randomText').addEventListener('click',()=>{ $('kicker').value='Questa sera'; $('title').value='Cocktail night'; $('subtitle').value='Drink, musica e atmosfera calda in centro a Trento.'; $('date').value='Stasera'; $('time').value='Dalle 21:00'; $('cta').value='Scrivici per prenotare'; $('image').value='foto-cocktail-lilla.jpg'; customBgData=''; $('upload').value=''; render(); });
+    logo.onload = draw;
+    loadBg();
   </script>
 </body>
 </html>
