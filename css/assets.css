@@ -2,7 +2,6 @@
   --logo-url: url("../images/logo.png");
 }
 
-/* Fix gallery: immagini vere, niente crop strani, card pulite */
 .gallery-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
@@ -14,16 +13,17 @@
 
 .photo-card img {
   width: 100%;
-  height: 360px;
-  object-fit: cover;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
   object-position: center;
+  background: #090305;
 }
 
 .photo-card figcaption {
   background: rgba(9, 3, 5, .92);
 }
 
-/* Fix menu: una colonna leggibile, senza buchi enormi da layout a griglia */
 .menu-page {
   display: grid !important;
   grid-template-columns: 1fr !important;
@@ -55,13 +55,30 @@
   min-width: max-content;
 }
 
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 13px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 240, 214, .18);
+  background: rgba(255, 240, 214, .08);
+  font-weight: 900;
+  margin-top: 12px;
+}
+
+.social-link:hover {
+  background: rgba(255, 240, 214, .14);
+}
+
 @media (max-width: 760px) {
   .gallery-grid {
     grid-template-columns: 1fr;
   }
 
   .photo-card img {
-    height: 310px;
+    max-height: none;
   }
 
   .menu-page {
