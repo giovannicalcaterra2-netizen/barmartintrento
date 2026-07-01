@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editor social | Bar Martin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #090305; color: #fff0d6; }
+    main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0; display: grid; grid-template-columns: 420px 1fr; gap: 24px; align-items: start; }
+    h1 { margin: 0 0 10px; font-size: 44px; letter-spacing: -.05em; }
+    p { color: #d2b892; line-height: 1.55; }
+    .panel { background: rgba(255,240,214,.08); border: 1px solid rgba(255,240,214,.14); border-radius: 24px; padding: 22px; }
+    label { display: block; margin: 16px 0 7px; color: #f4d9b5; font-weight: 900; }
+    input, textarea, select { width: 100%; border: 1px solid rgba(255,240,214,.18); background: rgba(0,0,0,.28); color: #fff0d6; border-radius: 14px; padding: 13px 14px; font: inherit; }
+    textarea { min-height: 90px; resize: vertical; }
+    .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+    button, a.button { border: 0; border-radius: 999px; padding: 14px 18px; font-weight: 900; background: #cf171f; color: white; text-align: center; cursor: pointer; text-decoration: none; }
+    a.secondary { background: #fff0d6; color: #2f2f2f; }
+    iframe { width: 100%; min-height: 760px; border: 1px solid rgba(255,240,214,.14); border-radius: 24px; background: #1b1b1b; }
+    .hint { font-size: 13px; margin-top: 14px; }
+    .toplink { display: inline-flex; margin-bottom: 16px; color: #f4d9b5; font-weight: 900; }
+    @media (max-width: 980px) { main { grid-template-columns: 1fr; } iframe { min-height: 620px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <a class="toplink" href="index.html">← Torna al sito</a>
+      <h1>Editor social</h1>
+      <p>Crea una preview rapida per post o story Bar Martin. Poi apri il link e fai screenshot/esporta dal browser.</p>
+
+      <label for="template">Formato</label>
+      <select id="template">
+        <option value="social/post-evento.html">Post Instagram 1080x1350</option>
+        <option value="social/story-evento.html">Story Instagram 1080x1920</option>
+      </select>
+
+      <label for="kicker">Kicker</label>
+      <input id="kicker" value="Evento">
+
+      <label for="title">Titolo</label>
+      <input id="title" value="Serata al Bar Martin">
+
+      <label for="subtitle">Sottotitolo</label>
+      <textarea id="subtitle">Cocktail, musica e sala interna nel cuore di Trento.</textarea>
+
+      <label for="date">Info 1</label>
+      <input id="date" value="Venerdì">
+
+      <label for="time">Info 2</label>
+      <input id="time" value="Dalle 21:00">
+
+      <label for="cta">CTA</label>
+      <input id="cta" value="Prenota il tuo tavolo">
+
+      <label for="badge">Badge</label>
+      <input id="badge" value="Via del Suffragio 51">
+
+      <label for="image">Immagine</label>
+      <select id="image">
+        <option value="../images/foto-sala-eventi.jpg">Sala eventi</option>
+        <option value="../images/foto-cocktail-lilla.jpg">Cocktail lilla</option>
+        <option value="../images/foto-aperitivo-cocktail-rossi.jpg">Aperitivo</option>
+        <option value="../images/foto-te-iraniano.jpg">Tè iraniano</option>
+      </select>
+
+      <div class="buttons">
+        <button id="generate">Genera preview</button>
+        <a class="button secondary" id="openLink" href="social/post-evento.html" target="_blank" rel="noopener">Apri grafica</a>
+      </div>
+      <p class="hint">Per ora non pubblica nulla: serve solo a creare preview grafiche coerenti.</p>
+    </section>
+
+    <section>
+      <iframe id="preview" src="social/post-evento.html" title="Preview social"></iframe>
+    </section>
+  </main>
+
+  <script>
+    const fields = ['kicker', 'title', 'subtitle', 'date', 'time', 'cta', 'badge', 'image'];
+    const preview = document.getElementById('preview');
+    const openLink = document.getElementById('openLink');
+
+    function buildUrl() {
+      const template = document.getElementById('template').value;
+      const params = new URLSearchParams();
+      fields.forEach(id => params.set(id, document.getElementById(id).value));
+      return `${template}?${params.toString()}`;
+    }
+
+    function updatePreview() {
+      const url = buildUrl();
+      preview.src = url;
+      openLink.href = url;
+    }
+
+    document.getElementById('generate').addEventListener('click', updatePreview);
+    fields.concat(['template']).forEach(id => {
+      document.getElementById(id).addEventListener('change', updatePreview);
+      document.getElementById(id).addEventListener('input', updatePreview);
+    });
+  </script>
+</body>
+</html>
