@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Night Latin",
+    "date": "Ogni martedì",
+    "time": "Dalle 21:00",
+    "tag": "Serata ricorrente",
+    "description": "Musica latina, atmosfera calda e drink nel cuore di Trento. Ideale per gruppi e studenti.",
+    "cta": "Prenota un tavolo"
+  },
+  {
+    "title": "Speed Dating 30–50",
+    "date": "Format eventi",
+    "time": "Dalle 18:00",
+    "tag": "Incontri dal vivo",
+    "description": "Un drink, pochi minuti per conoscersi e una serata pensata per uscire dalla solita routine.",
+    "cta": "Chiedi la prossima data"
+  },
+  {
+    "title": "Feste private & lauree",
+    "date": "Su prenotazione",
+    "time": "Sala interna",
+    "tag": "Evento su misura",
+    "description": "Compleanni, lauree, feste Erasmus e serate community con drink, shisha e musica.",
+    "cta": "Scrivi su WhatsApp"
+  }
+]

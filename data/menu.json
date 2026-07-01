@@ -1,0 +1,20 @@
+[
+  {
+    "category": "Signature",
+    "items": [
+      {"name": "Cocktail persiani", "price": "15€", "note": "Linea distintiva da spingere nelle grafiche social."},
+      {"name": "Tè allo zafferano", "price": "10€", "note": "Relax, caldo e super riconoscibile."},
+      {"name": "Tè Damnosh", "price": "10€", "note": "Infuso caldo iraniano, ideale per contenuti storytelling."},
+      {"name": "Shisha / narghilè", "price": "Chiedi al locale", "note": "Prodotto centrale per gruppi e serate."}
+    ]
+  },
+  {
+    "category": "Aperitivi",
+    "items": [
+      {"name": "Spritz Aperol / Campari / Select", "price": "5€", "note": "Classico per studenti e aperitivi."},
+      {"name": "Spritz Passoa", "price": "6€", "note": "Alternativa dolce e tropicale."},
+      {"name": "Hugo", "price": "5€", "note": "Fresco, leggero, molto vendibile in estate."},
+      {"name": "Passoa Lemon", "price": "6€", "note": "Drink facile per gruppi."}
+    ]
+  }
+]
