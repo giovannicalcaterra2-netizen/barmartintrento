@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu | Bar Martin Trento</title>
+  <meta name="description" content="Menu del Bar Martin Trento: caffetteria, tè caldo, birre, vini, amari, aperitivi, cocktail, gin tonic e cocktail persiani." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar" id="top">
+    <a class="brand" href="index.html" aria-label="Torna alla home Bar Martin">
+      <span class="logo-emblem" aria-hidden="true"></span>
+      <span>
+        <strong>Bar Martin</strong>
+        <small>Menu</small>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Apri menu">☰</button>
+    <nav class="nav" id="navMenu" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="index.html#eventi">Eventi</a>
+      <a href="index.html#mappa">Mappa</a>
+      <a href="index.html#contatti">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="menu-hero section">
+      <div class="section-title reveal">
+        <p class="eyebrow">Menu digitale</p>
+        <h1>Menu Bar Martin</h1>
+        <p class="lead">Categorie ordinate e prezzi leggibili da telefono. Per prenotazioni: 329 077 3833.</p>
+      </div>
+      <div class="menu-pills reveal delay-1" id="menuPills" aria-label="Categorie menu"></div>
+    </section>
+
+    <section class="section menu-page" id="menuSections" aria-live="polite"></section>
+  </main>
+
+  <div class="mobile-cta" aria-label="Azioni rapide">
+    <a href="index.html">Home</a>
+    <a href="https://wa.me/393290773833?text=Ciao%20Bar%20Martin%2C%20vorrei%20prenotare" target="_blank" rel="noopener">Prenota</a>
+  </div>
+
+  <footer class="footer">
+    <span>Bar Martin · Via del Suffragio 51 · Trento</span>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
