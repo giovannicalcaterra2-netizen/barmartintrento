@@ -3,25 +3,47 @@
 }
 
 .gallery-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  align-items: stretch !important;
 }
 
 .photo-card {
-  overflow: hidden;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 24px !important;
+  min-height: 0 !important;
+  background: #12090b !important;
 }
 
 .photo-card img {
-  width: 100%;
-  height: auto;
-  max-height: 520px;
-  object-fit: contain;
-  object-position: center;
-  background: #090305;
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  background: transparent !important;
+}
+
+.photo-card:nth-child(2) img {
+  object-position: center 42% !important;
 }
 
 .photo-card figcaption {
-  background: rgba(9, 3, 5, .92);
+  position: absolute !important;
+  left: 10px !important;
+  right: 10px !important;
+  bottom: 10px !important;
+  width: auto !important;
+  padding: 8px 10px !important;
+  border-radius: 999px !important;
+  background: rgba(9, 3, 5, .78) !important;
+  color: #fff0d6 !important;
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+  font-weight: 900 !important;
 }
 
 .menu-page {
@@ -48,11 +70,11 @@
 }
 
 .menu-item {
-  align-items: flex-start;
+  align-items: flex-start !important;
 }
 
 .menu-item span {
-  min-width: max-content;
+  min-width: max-content !important;
 }
 
 .social-link {
@@ -72,13 +94,19 @@
   background: rgba(255, 240, 214, .14);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .gallery-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
   }
 
   .photo-card img {
-    max-height: none;
+    aspect-ratio: 4 / 3 !important;
   }
 
   .menu-page {
